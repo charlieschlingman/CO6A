@@ -30,6 +30,17 @@ public class Stove {
 	 **** You must write the following method ****
 	 */
 	public void displayStove() {
+		boolean hotAlert = false;
+	    for (Burner b : burners) {
+	        b.display(); // each burner prints itself using Setting.toString()
+	        if (b.getTemperature() == Burner.Temperature.BLAZING) {
+	            hotAlert = true;
+	        }
+	    }
+	    if (hotAlert) {
+	        System.out.println("** HOT BURNER ALERT **");
+	    }
+	    System.out.println(); // blank line between stove snapshots
 
 	}
 	
@@ -116,5 +127,6 @@ public class Stove {
 		System.out.println("\nStove in final state ");
 		stove.displayStove();	
 	}
+	
 
 }
